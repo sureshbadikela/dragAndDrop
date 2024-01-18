@@ -2,22 +2,25 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
+  //form variables
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
   const [email, setEmail] = useState('');
   const [place, setPlace] = useState('');
 
-
+  //div arrays
   const [ageGroup1to18, setAgeGroup1to18] = useState([]);
   const [ageGroup19to25, setAgeGroup19to25] = useState([]);
   const [ageGroup25to45, setAgeGroup25to45] = useState([]);
   const [ageGroupAbove45, setAgeGroupAbove45] = useState([]);
 
+  //card drag start method
   const handleDragStart = (event, person, source) => {
     event.dataTransfer.setData('person', JSON.stringify(person));
     event.dataTransfer.setData('source', source);
   };
 
+  //card drop Method
   const handleDrop = (event, target) => {
     event.preventDefault();
     const person = JSON.parse(event.dataTransfer.getData('person'));
@@ -58,6 +61,7 @@ function App() {
     }
   };
 
+  //form submit Method
   const handleSubmit = (e) => {
     e.preventDefault();
     if (name !== '' && age !== "" && email !== "" && place !== '') {
@@ -80,6 +84,7 @@ function App() {
     }
   };
 
+  //form rest method
   const reset = (e) => {
     e.preventDefault();
     setName('');
@@ -90,6 +95,7 @@ function App() {
   return (
     <div className="container">
       <div className="row">
+        <p className='text-center'>Drag And Drop</p>
         {/* Form Column */}
         <form>
           <div className='row'>
@@ -152,15 +158,15 @@ function App() {
           >
             <p className='m-0 text-center'>Age 1-18 </p>
             {ageGroup1to18.map((person, index) => (
-              <div class="card" key={index}
+              <div key={index}
                 draggable
                 onDragStart={(e) => handleDragStart(e, person, 'ageGroup1to18')}
-                className="draggable-item bg-light p-2 mb-2 " style={{ cursor: 'pointer' }}>
-                <div class="card-body">
-                  <h5 class="card-title"> {person.name}</h5>
-                  <p class="card-text m-0">Age: {person.age}</p>
-                  <p class="card-text m-0">Email: {person.email}</p>
-                  <p class="card-text m-0">Place: {person.place}</p>
+                className="card draggable-item bg-light p-2 mb-2 " style={{ cursor: 'pointer' }}>
+                <div className="card-body">
+                  <h5 className="card-title"> {person.name}</h5>
+                  <p className="card-text m-0">Age: {person.age}</p>
+                  <p className="card-text m-0">Email: {person.email}</p>
+                  <p className="card-text m-0">Place: {person.place}</p>
                 </div>
               </div>
             ))}
@@ -175,15 +181,15 @@ function App() {
           >
             <p className='m-0 text-center '>Age 19-25 </p>
             {ageGroup19to25.map((person, index) => (
-              <div class="card" key={index}
+              <div key={index}
                 draggable
                 onDragStart={(e) => handleDragStart(e, person, 'ageGroup19to25')}
-                className="draggable-item bg-light p-2 mb-2 " style={{ cursor: 'pointer' }}>
-                <div class="card-body">
-                  <h5 class="card-title"> {person.name}</h5>
-                  <p class="card-text m-0">Age: {person.age}</p>
-                  <p class="card-text m-0">Emal: {person.email}</p>
-                  <p class="card-text m-0">Place: {person.place}</p>
+                className="card draggable-item bg-light p-2 mb-2 " style={{ cursor: 'pointer' }}>
+                <div className="card-body">
+                  <h5 className="card-title"> {person.name}</h5>
+                  <p className="card-text m-0">Age: {person.age}</p>
+                  <p className="card-text m-0">Emal: {person.email}</p>
+                  <p className="card-text m-0">Place: {person.place}</p>
                 </div>
               </div>
 
@@ -197,15 +203,15 @@ function App() {
           >
             <p className='m-0 text-center'>Age 26-45 </p>
             {ageGroup25to45.map((person, index) => (
-              <div class="card" key={index}
+              <div key={index}
                 draggable
                 onDragStart={(e) => handleDragStart(e, person, 'ageGroup25to45')}
-                className="draggable-item bg-light p-2 mb-2 " style={{ cursor: 'pointer' }}>
-                <div class="card-body">
-                  <h5 class="card-title"> {person.name}</h5>
-                  <p class="card-text m-0">Age: {person.age}</p>
-                  <p class="card-text m-0">Emal: {person.email}</p>
-                  <p class="card-text m-0">Place: {person.place}</p>
+                className="card draggable-item bg-light p-2 mb-2 " style={{ cursor: 'pointer' }}>
+                <div className="card-body">
+                  <h5 className="card-title"> {person.name}</h5>
+                  <p className="card-text m-0">Age: {person.age}</p>
+                  <p className="card-text m-0">Emal: {person.email}</p>
+                  <p className="card-text m-0">Place: {person.place}</p>
                 </div>
               </div>
             ))}
@@ -218,15 +224,15 @@ function App() {
           >
             <p className='m-0 text-center'>Age 45+</p>
             {ageGroupAbove45.map((person, index) => (
-              <div class="card" key={index}
+              <div key={index}
                 draggable
                 onDragStart={(e) => handleDragStart(e, person, 'ageGroupAbove45')}
-                className="draggable-item bg-light p-2 mb-2 " style={{ cursor: 'pointer' }}>
-                <div class="card-body">
-                  <h5 class="card-title"> {person.name}</h5>
-                  <p class="card-text m-0">Age: {person.age}</p>
-                  <p class="card-text m-0">Emal: {person.email}</p>
-                  <p class="card-text m-0">Place: {person.place}</p>
+                className="card draggable-item bg-light p-2 mb-2 " style={{ cursor: 'pointer' }}>
+                <div className="card-body">
+                  <h5 className="card-title"> {person.name}</h5>
+                  <p className="card-text m-0">Age: {person.age}</p>
+                  <p className="card-text m-0">Emal: {person.email}</p>
+                  <p className="card-text m-0">Place: {person.place}</p>
                 </div>
               </div>
             ))}
